@@ -1,34 +1,11 @@
 # c2-split-pane
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-# INSTALL
+## INSTALL
 ```
 npm i c2-split-pane
 ```
 
-# CODE demo.vue
+## CODE demo.vue
 ```
 <template>
   <c2-split-pane>
@@ -49,4 +26,4 @@ export default {
 </script>
 ```
 
-# DEMO []
+## DEMO [https://lancelixiang.github.io/c2-split-pane/]

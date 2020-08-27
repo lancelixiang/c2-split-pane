@@ -1,6 +1,6 @@
 {
-  "name": "c2-split-pane2",
-  "version": "0.1.0",
+  "name": "c2-split-pane",
+  "version": "0.2.0",
   "private": false,
   "description": "一个能够改变上下高度或左右宽度的可分割面板",
   "main": "src/C2SplitPane.vue",
@@ -41,6 +41,10 @@
       "parser": "babel-eslint"
     },
     "rules": {}
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lancelixiang/c2-split-pane.git"
   },
   "browserslist": [
     "> 1%",
