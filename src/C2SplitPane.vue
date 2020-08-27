@@ -1,0 +1,93 @@
+<template>
+  <div
+    :class="{ 'split-pane': true, 'is-dragging': dragging }"
+    @mousemove="dragMove"
+    @mouseleave="dragEnd"
+    @mouseup="dragEnd"
+  >
+    <div class="split-pane-item-left" :style="{ width: left + 'px' }">
+      <slot name="left"></slot>
+    </div>
+    <div class="split-pane-gutter" @mousedown="dragStart"></div>
+    <div class="split-pane-item-right">
+      <slot name="right"></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "c2-split-pane",
+  props: {
+    type: String,
+    leftWidth: { type: Number, default: 200 },
+  },
+  data() {
+    return {
+      dragging: false,
+      left: 0,
+    };
+  },
+  mounted() {
+    this.left = this.leftWidth;
+  },
+  methods: {
+    dragStart(e) {
+      this.dragging = true;
+      this.startX = e.pageX;
+      this.startSplit = this.left || this.leftWidth;
+    },
+    dragMove(e) {
+      if (this.dragging) {
+        const dx = e.pageX - this.startX;
+        this.left = this.startSplit + dx;
+      }
+    },
+    dragEnd() {
+      this.dragging = false;
+    },
+  },
+};
+</script>
+
+<style scoped>
+.split-pane {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+.split-pane-item-left,
+.split-pane-item-right,
+.split-pane-gutter {
+  height: 100%;
+}
+
+.split-pane-item-right {
+  flex: 1 1 auto;
+}
+
+.split-pane-gutter {
+  background: #000;
+  opacity: 0.2;
+  z-index: 1;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  width: 11px;
+  margin: 0 -5px;
+  border-left: 5px solid rgba(255, 255, 255, 0);
+  border-right: 5px solid rgba(255, 255, 255, 0);
+  cursor: col-resize;
+}
+
+.split-pane-gutter:hover,
+.split-pane-gutter:focus {
+  border-left: 5px solid rgba(0, 0, 0, 0.5);
+  border-right: 5px solid rgba(0, 0, 0, 0.5);
+  transition: all 2s ease;
+}
+
+.is-dragging {
+  cursor: col-resize;
+}
+</style>

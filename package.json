@@ -2,10 +2,13 @@
   "name": "c2-split-pane",
   "version": "0.1.0",
   "private": true,
+  "description": "一个能够改变上下高度或左右宽度的可分割面板",
+  "main": "src/C2SplitPane.vue",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "umd": "npx vue-cli-service build --target lib --name C2SplitPane src/C2SplitPane.vue"
   },
   "dependencies": {
     "core-js": "^3.6.5",
