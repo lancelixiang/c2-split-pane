@@ -26,4 +26,4 @@ export default {
 </script>
 ```
 
-## DEMO [https://lancelixiang.github.io/c2-split-pane/]
+## [DEMO](https://lancelixiang.github.io/c2-split-pane/)
