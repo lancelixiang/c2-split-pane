@@ -1,16 +1,19 @@
 {
-  "name": "c2-split-pane",
+  "name": "c2-split-pane2",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "description": "一个能够改变上下高度或左右宽度的可分割面板",
   "main": "src/C2SplitPane.vue",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "umd": "npx vue-cli-service build --target lib --name C2SplitPane src/C2SplitPane.vue"
+    "umd": "npx vue-cli-service build --target lib --name C2SplitPane src/C2SplitPane.vue",
+    "deploy": "cross-env npm run build && npm run gh-pages",
+    "gh-pages": "gh-pages -d dist -b deploy"
   },
   "dependencies": {
+    "c2-split-pane": "^0.1.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
@@ -19,8 +22,10 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "gh-pages": "^3.1.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

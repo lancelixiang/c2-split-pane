@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import c2SplitPane from "./C2SplitPane";
+import c2SplitPane from "c2-split-pane";
 
 export default {
   name: "App",
