@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "c2-split-pane",
+  name: "c2SplitPane",
   props: {
     type: String,
     leftWidth: { type: Number, default: 200 },

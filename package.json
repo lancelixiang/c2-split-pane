@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "umd": "npx vue-cli-service build --target lib --name c2-split-pane src/C2SplitPane.vue",
+    "umd": "npx vue-cli-service build --target lib --name c2SplitPane src/C2SplitPane.vue",
     "deploy": "cross-env npm run build && npm run gh-pages",
     "gh-pages": "gh-pages -d dist -b deploy"
   },
