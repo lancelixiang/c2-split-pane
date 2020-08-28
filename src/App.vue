@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import c2SplitPane from "c2-split-pane";
+import c2SplitPane from "./C2SplitPane";
 
 export default {
   name: "App",
@@ -21,12 +21,12 @@ export default {
 </script>
 <style scoped>
 .left {
-  height: 600px;
+  height: calc(100vh - 20px);
   margin-right: 10px;
   background-color: aquamarine;
 }
 .right {
-  width: 750px;
+  min-width: 750px;
   margin-left: 10px;
   background-color: darkcyan;
 }

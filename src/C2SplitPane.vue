@@ -10,7 +10,9 @@
     </div>
     <div class="split-pane-gutter" @mousedown="dragStart"></div>
     <div class="split-pane-item-right">
-      <slot name="right"></slot>
+      <div class="right-inner">
+        <slot name="right"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -50,44 +52,36 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .split-pane {
   display: flex;
   flex-direction: row;
-  height: 100px;
-}
 
-.split-pane-item-left,
-.split-pane-item-right,
-.split-pane-gutter {
-  height: 100%;
-}
+  .split-pane-gutter {
+    background: #000;
+    opacity: 0.2;
+    z-index: 1;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    width: 11px;
+    margin: 0 -5px;
+    border-left: 5px solid rgba(255, 255, 255, 0);
+    border-right: 5px solid rgba(255, 255, 255, 0);
+    cursor: col-resize;
 
-.split-pane-item-right {
-  flex: 1 1 auto;
-}
-
-.split-pane-gutter {
-  background: #000;
-  opacity: 0.2;
-  z-index: 1;
-  box-sizing: border-box;
-  background-clip: padding-box;
-  width: 11px;
-  margin: 0 -5px;
-  border-left: 5px solid rgba(255, 255, 255, 0);
-  border-right: 5px solid rgba(255, 255, 255, 0);
-  cursor: col-resize;
-}
-
-.split-pane-gutter:hover,
-.split-pane-gutter:focus {
-  border-left: 5px solid rgba(0, 0, 0, 0.5);
-  border-right: 5px solid rgba(0, 0, 0, 0.5);
-  transition: all 2s ease;
-}
-
-.is-dragging {
-  cursor: col-resize;
+    &:hover,
+    &:focus {
+      border-left: 5px solid rgba(0, 0, 0, 0.5);
+      border-right: 5px solid rgba(0, 0, 0, 0.5);
+      transition: all 2s ease;
+    }
+  }
+  .split-pane-item-right {
+    flex: 1 1 auto;
+    .right-inner {
+      width: 100%;
+      overflow: auto;
+    }
+  }
 }
 </style>
