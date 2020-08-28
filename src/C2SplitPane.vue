@@ -59,6 +59,18 @@ export default {
   &.is-dragging {
     cursor: col-resize;
   }
+  &:hover {
+    .split-pane-gutter:before {
+      position: absolute;
+      top: 38%;
+      width: 17px;
+      height: 20px;
+      margin-left: -8.2px;
+      content: "";
+      background: url(./drag.svg) center center;
+      background-size: 100% 100%;
+    }
+  }
 
   .split-pane-gutter {
     background: #000;
