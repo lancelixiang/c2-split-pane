@@ -56,6 +56,9 @@ export default {
 .split-pane {
   display: flex;
   flex-direction: row;
+  &.is-dragging {
+    cursor: col-resize;
+  }
 
   .split-pane-gutter {
     background: #000;
@@ -78,6 +81,7 @@ export default {
   }
   .split-pane-item-right {
     flex: 1 1 auto;
+    width: 0;
     .right-inner {
       width: 100%;
       overflow: auto;
