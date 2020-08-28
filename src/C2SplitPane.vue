@@ -79,7 +79,7 @@ export default {
     box-sizing: border-box;
     background-clip: padding-box;
     width: 11px;
-    margin: 0 -5px;
+    margin: 0 5px;
     border-left: 5px solid rgba(255, 255, 255, 0);
     border-right: 5px solid rgba(255, 255, 255, 0);
     cursor: col-resize;

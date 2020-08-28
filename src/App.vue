@@ -22,12 +22,10 @@ export default {
 <style scoped>
 .left {
   height: calc(100vh - 20px);
-  margin-right: 10px;
   background-color: aquamarine;
 }
 .right {
   min-width: 750px;
-  margin-left: 10px;
   background-color: darkcyan;
 }
 </style>>
