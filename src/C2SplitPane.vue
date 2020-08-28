@@ -57,6 +57,7 @@ export default {
   display: flex;
   flex-direction: row;
   &.is-dragging {
+    user-select: none;
     cursor: col-resize;
   }
   &:hover {
