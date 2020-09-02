@@ -74,7 +74,7 @@ export default {
   }
 
   .split-pane-gutter {
-    background: #000;
+    background: #ccc;
     opacity: 0.2;
     z-index: 1;
     box-sizing: border-box;
