@@ -4,7 +4,14 @@
       <div class="left">left left left left</div>
     </template>
     <template v-slot:right>
-      <div class="right">right</div>
+      <c2-split-pane type="vertical">
+        <template v-slot:up>
+          <div class="up">up</div>
+        </template>
+        <template v-slot:down>
+          <div class="down">down</div>
+        </template>
+      </c2-split-pane>
     </template>
   </c2-split-pane>
 </template>
@@ -19,13 +26,24 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="less" scoped>
 .left {
-  height: calc(100vh - 20px);
+  height: calc(100vh - 300px);
   background-color: aquamarine;
 }
-.right {
+
+.split-pane .split-pane {
+  height: 100%;
+}
+.up {
+  height: 100%;
+  min-height: 100px;
+  background-color: blueviolet;
+}
+.down {
+  height: 100%;
+  min-height: 250px;
   min-width: 750px;
-  background-color: darkcyan;
+  background-color: cornflowerblue;
 }
 </style>>
