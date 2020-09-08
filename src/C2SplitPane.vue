@@ -47,11 +47,16 @@ export default {
       up: 0,
     };
   },
+  created() {
+    window.addEventListener("resize", this.resize, false);
+  },
   mounted() {
     this.$nextTick(() => {
       this.update(this.leftWidth, this.upHeight);
     });
-    
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.resize, false);
   },
   methods: {
     dragStart(e) {
@@ -73,6 +78,10 @@ export default {
     dragEnd() {
       this.dragging = false;
     },
+    /** 响应拖拽事件
+     * @param left {number}
+     * @param up   {number}
+     */
     update(left, up) {
       const { offsetWidth, offsetHeight } = this.$refs.wrapper;
 
@@ -82,6 +91,19 @@ export default {
       if (up > this.minHeight && offsetHeight - up > this.minHeight) {
         this.up = up;
       }
+    },
+    /** 响应容器resize事件 */
+    resize() {
+      this.$nextTick(() => {
+        const { offsetWidth, offsetHeight } = this.$refs.wrapper;
+        if (offsetWidth - this.left < this.minWidth) {
+          this.left = offsetWidth - this.minWidth;
+        }
+        console.log("aaaa", offsetHeight);
+        if (offsetHeight - this.up < this.minHeight) {
+          this.up = offsetHeight - this.minHeight;
+        }
+      });
     },
   },
 };
@@ -98,7 +120,7 @@ export default {
       &:before {
         top: auto;
         left: 50%;
-        margin-left: 0;
+        margin-left: -10px;
         margin-top: -9px;
         transform: rotate(90deg);
       }

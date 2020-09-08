@@ -28,12 +28,13 @@ export default {
 </script>
 <style lang="less" scoped>
 .left {
-  height: calc(100vh - 300px);
+  height: 100%;
   background-color: aquamarine;
 }
 
 .split-pane .split-pane {
-  height: 100%;
+  /** 二级分割面板容器要设置调试 */
+  height: calc(100vh - 100px);
 }
 .up {
   height: 100%;
