@@ -4,6 +4,7 @@
     @mousemove="dragMove"
     @mouseleave="dragEnd"
     @mouseup="dragEnd"
+    ref="wrapper"
   >
     <div v-if="type==='vertical'" class="split-pane-item-up" :style="{ height: up + 'px' }">
       <div class="up-inner">
@@ -33,9 +34,11 @@
 export default {
   name: "c2SplitPane",
   props: {
-    type: String,
-    leftWidth: { type: Number, default: 200 },
-    upHeight: { type: Number, default: 200 },
+    type: { type: String, default: "horizon" }, // 分割面板类型 水平：horizon， 垂直：vertical
+    leftWidth: { type: Number, default: 200 }, // 左侧面板的宽度
+    upHeight: { type: Number, default: 200 }, // 上方面板的宽度
+    minWidth: { type: Number, default: 50 }, // 水平面板的最小宽
+    minHeight: { type: Number, default: 50 }, // 垂直面板的最小高
   },
   data() {
     return {
@@ -45,8 +48,10 @@ export default {
     };
   },
   mounted() {
-    this.left = this.leftWidth;
-    this.up = this.upHeight;
+    this.$nextTick(() => {
+      this.update(this.leftWidth, this.upHeight);
+    });
+    
   },
   methods: {
     dragStart(e) {
@@ -60,12 +65,23 @@ export default {
       if (this.dragging) {
         const dx = e.pageX - this.startX;
         const dy = e.pageY - this.startY;
-        this.left = this.startSplitX + dx;
-        this.up = this.startSplitY + dy;
+        const left = this.startSplitX + dx;
+        const up = this.startSplitY + dy;
+        this.update(left, up);
       }
     },
     dragEnd() {
       this.dragging = false;
+    },
+    update(left, up) {
+      const { offsetWidth, offsetHeight } = this.$refs.wrapper;
+
+      if (left > this.minWidth && offsetWidth - left > this.minWidth) {
+        this.left = left;
+      }
+      if (up > this.minHeight && offsetHeight - up > this.minHeight) {
+        this.up = up;
+      }
     },
   },
 };
