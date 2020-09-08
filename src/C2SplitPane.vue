@@ -6,7 +6,9 @@
     @mouseup="dragEnd"
   >
     <div class="split-pane-item-left" :style="{ width: left + 'px' }">
-      <slot name="left"></slot>
+      <div class="left-inner">
+        <slot name="left"></slot>
+      </div>
     </div>
     <div class="split-pane-gutter" @mousedown="dragStart"></div>
     <div class="split-pane-item-right">
@@ -73,6 +75,14 @@ export default {
     }
   }
 
+  .split-pane-item-left {
+    .left-inner {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+  }
+
   .split-pane-gutter {
     background: #ccc;
     opacity: 0.2;
@@ -97,6 +107,7 @@ export default {
     width: 0;
     .right-inner {
       width: 100%;
+      height: 100%;
       overflow: auto;
     }
   }

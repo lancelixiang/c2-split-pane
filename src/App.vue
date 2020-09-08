@@ -1,7 +1,7 @@
 <template>
   <c2-split-pane>
     <template v-slot:left>
-      <div class="left">left</div>
+      <div class="left">left left left left</div>
     </template>
     <template v-slot:right>
       <div class="right">right</div>
