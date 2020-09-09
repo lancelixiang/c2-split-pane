@@ -16,7 +16,11 @@
         <slot name="left"></slot>
       </div>
     </div>
-    <div class="split-pane-gutter" @mousedown="dragStart"></div>
+    <div
+      class="split-pane-gutter"
+      :class="{'is-vertical': type==='vertical' }"
+      @mousedown="dragStart"
+    ></div>
     <div v-if="type==='vertical'" class="split-pane-item-down">
       <div class="down-inner">
         <slot name="down"></slot>
@@ -113,6 +117,7 @@ export default {
   position: relative;
   display: flex;
   flex-direction: row;
+
   &.is-vertical {
     flex-direction: column;
     &:hover > .split-pane-gutter {
@@ -122,19 +127,6 @@ export default {
         margin-left: -10px;
         margin-top: -9px;
         transform: rotate(90deg);
-      }
-    }
-    .split-pane-gutter {
-      width: auto;
-      height: 11px;
-      margin: 5px 0;
-      border-top: 5px solid rgba(255, 255, 255, 0);
-      border-bottom: 5px solid rgba(255, 255, 255, 0);
-      cursor: row-resize;
-      &:hover,
-      &:focus {
-        border-top: 5px solid rgba(0, 0, 0, 0.5);
-        border-bottom: 5px solid rgba(0, 0, 0, 0.5);
       }
     }
   }
@@ -169,6 +161,20 @@ export default {
       border-left: 5px solid rgba(0, 0, 0, 0.5);
       border-right: 5px solid rgba(0, 0, 0, 0.5);
       transition: all 2s ease;
+    }
+
+    &.is-vertical {
+      width: auto;
+      height: 11px;
+      margin: 5px 0;
+      border-top: 5px solid rgba(255, 255, 255, 0);
+      border-bottom: 5px solid rgba(255, 255, 255, 0);
+      cursor: row-resize;
+      &:hover,
+      &:focus {
+        border-top: 5px solid rgba(0, 0, 0, 0.5);
+        border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+      }
     }
   }
 
