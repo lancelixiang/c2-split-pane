@@ -99,7 +99,6 @@ export default {
         if (offsetWidth - this.left < this.minWidth) {
           this.left = offsetWidth - this.minWidth;
         }
-        console.log("aaaa", offsetHeight);
         if (offsetHeight - this.up < this.minHeight) {
           this.up = offsetHeight - this.minHeight;
         }
