@@ -191,6 +191,7 @@ export default {
     .right-inner {
       width: 100%;
       height: 100%;
+      overflow: auto;
     }
   }
   .split-pane-item-up {
