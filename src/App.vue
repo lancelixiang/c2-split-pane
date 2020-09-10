@@ -44,7 +44,7 @@ export default {
 }
 
 .right-inner > .split-pane {
-  /** 二级分割面板容器要设置高度 */
+  /** 二级分割面板容器要设置高度 **/
   height: calc(100vh - 100px);
 }
 .down > .split-pane {
