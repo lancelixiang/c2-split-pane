@@ -177,6 +177,8 @@ export default {
       margin: 5px 0;
       border-top: 5px solid rgba(255, 255, 255, 0);
       border-bottom: 5px solid rgba(255, 255, 255, 0);
+      border-left: 0px solid rgba(255, 255, 255, 0);
+      border-right: 0px solid rgba(255, 255, 255, 0);
       cursor: row-resize;
       &:hover,
       &:focus {
