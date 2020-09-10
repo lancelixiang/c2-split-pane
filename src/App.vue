@@ -1,21 +1,23 @@
 <template>
   <c2-split-pane>
-    <template v-slot:left>
-      <div class="left">left left left left</div>
+    <template #left="left">
+      <div class="left">left {{left.width}}</div>
     </template>
-    <template v-slot:right>
+    <template #right="right">
       <c2-split-pane type="vertical">
-        <template v-slot:up>
-          <div class="up">up</div>
+        <template #up="up">
+          <div class="up">right up {{right.width}}*{{up.height}}</div>
         </template>
-        <template v-slot:down>
+        <template #down="down">
           <div class="down">
             <c2-split-pane>
-              <template v-slot:left>
-                <div class="down-left">down-left</div>
+              <template #left="downLeft">
+                <div class="down-left">down-left {{downLeft.width}}*{{down.height}}</div>
               </template>
-              <template v-slot:right>
-                <div class="down-right">down-right</div>
+              <template #right="downRight">
+                <div class="down-right">
+                  down-right {{downRight.width}}*{{down.height}}
+                </div>
               </template>
             </c2-split-pane>
           </div>

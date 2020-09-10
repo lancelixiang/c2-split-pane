@@ -8,12 +8,12 @@
   >
     <div v-if="type==='vertical'" class="split-pane-item-up" :style="{ height: up + 'px' }">
       <div class="up-inner">
-        <slot name="up"></slot>
+        <slot name="up" :height="up"></slot>
       </div>
     </div>
     <div v-else class="split-pane-item-left" :style="{ width: left + 'px' }">
       <div class="left-inner">
-        <slot name="left"></slot>
+        <slot name="left" :width="left"></slot>
       </div>
     </div>
     <div
@@ -23,12 +23,12 @@
     ></div>
     <div v-if="type==='vertical'" class="split-pane-item-down">
       <div class="down-inner">
-        <slot name="down"></slot>
+        <slot name="down" :height="down"></slot>
       </div>
     </div>
     <div v-else class="split-pane-item-right">
       <div class="right-inner">
-        <slot name="right"></slot>
+        <slot name="right" :width="right"></slot>
       </div>
     </div>
   </div>
@@ -48,7 +48,9 @@ export default {
     return {
       dragging: false,
       left: 0,
+      right: 0,
       up: 0,
+      down: 0,
     };
   },
   created() {
@@ -92,9 +94,12 @@ export default {
       if (left > this.minWidth && offsetWidth - left > this.minWidth) {
         this.left = left;
       }
+      this.right = offsetWidth - this.left - 21;
+
       if (up > this.minHeight && offsetHeight - up > this.minHeight) {
         this.up = up;
       }
+      this.down = offsetHeight - this.up - 21;
     },
     /** 响应容器resize事件 */
     resize() {
@@ -103,9 +108,12 @@ export default {
         if (offsetWidth - this.left < this.minWidth) {
           this.left = offsetWidth - this.minWidth;
         }
+        this.right = offsetWidth - this.left - 21;
+
         if (offsetHeight - this.up < this.minHeight) {
           this.up = offsetHeight - this.minHeight;
         }
+        this.down = offsetHeight - this.up - 21;
       });
     },
   },
